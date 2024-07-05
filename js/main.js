@@ -94,3 +94,56 @@
     
 })(jQuery);
 
+// Define the array of words to display
+const words = ["Hob", "Healthy on Budget", "HobIntergrated"];
+
+// Get the element where the word will be displayed
+const wordDisplay = document.getElementById('wordDisplay');
+const mediaContainer = document.getElementById('media-container');
+
+// Function to display words one after another
+function displayWords() {
+    let wordIndex = 0;
+    let letterIndex = 0;
+
+    // Function to display the next letter of the current word
+    function displayNextLetter() {
+        // Check if all letters of the current word have been displayed
+        if (letterIndex === words[wordIndex].length) {
+            // Start removing letters for the current word
+            setTimeout(removeLetters, 1000); // Delay before removing letters
+            return;
+        }
+
+        // Display the next letter of the current word
+        wordDisplay.textContent += words[wordIndex][letterIndex];
+        letterIndex++;
+
+        // Call this function recursively to display the next letter
+        setTimeout(displayNextLetter, 200); // Adjust the interval (in milliseconds) to control the speed
+    }
+
+    // Function to remove letters of the current word
+    function removeLetters() {
+        let word = wordDisplay.textContent;
+        if (word.length === 0) {
+            // Move to the next word or loop back to the first word
+            wordIndex = (wordIndex + 1) % words.length;
+            letterIndex = 0;
+            setTimeout(displayNextLetter, 1000); // Delay before displaying the next word
+            return;
+        }
+        
+        // Remove the last letter from the current word
+        wordDisplay.textContent = word.slice(0, -1);
+        
+        // Call this function recursively to remove the next letter
+        setTimeout(removeLetters, 100); // Adjust the interval (in milliseconds) to control the speed
+    }
+
+    // Start displaying the first word
+    displayNextLetter();
+}
+
+// Call the function to start displaying words
+displayWords();

@@ -1,7 +1,7 @@
 /********** Template CSS **********/
 :root {
-    --primary: #34AD54;
-    --secondary: #b98d2e;
+    --primary: #0f4e12;
+    --secondary: #0f4e12;
     --light: #bdbdbd;
     --dark: #263A4F;
 }
@@ -150,6 +150,15 @@
     color: var(--light);
 }
 
+.skill-center {
+    display: grid;
+    justify-content: center;
+    grid: auto / auto auto auto;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 15px;
+    padding: 3rem;
+}
+
 .product-item {
     padding: 0 30px 30px 30px;
 }
@@ -165,11 +174,11 @@
 
 .product-item:hover .btn-action {
     bottom: 0;
-    opacity: 1;
+    opacity: 1;  
 }
 
 .product-item h5 {
-    transition: .2s;
+    transition: .1s;
 }
 
 .product-item:hover h5 {
@@ -178,7 +187,7 @@
 
 .product-carousel::after {
     position: absolute;
-    content: "";
+    content: "grid";
     width: 100%;
     height: 55%;
     bottom: 0;
@@ -192,7 +201,7 @@
 .product-carousel .owl-nav {
     width: 100%;
     text-align: center;
-    display: flex;
+    display: grid;
     justify-content: center;
 }
 
@@ -202,7 +211,7 @@
     width: 55px;
     height: 45px;
     display: grid;
-    align-items: center;
+    align-items: grid;
     justify-content: center;
     color: var(--primary);
     background: #FFFFFF;
